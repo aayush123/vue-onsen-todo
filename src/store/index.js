@@ -1,33 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-// import $ from 'jquery'
+import getters from './Getters';
+import mutations from './Mutations';
+import state from './State';
+import actions from './Actions';
 
 Vue.use(Vuex);
-
-const state = {
-  dataLoaded: false,
-  projects: {},
-};
-
-const mutations = {};
-
-const getters = {
-  dataLoadStatus: appState => appState.dataLoaded,
-  // dataLoadStatus(appState) {
-  //   return (test) => {
-  //     let retVal;
-  //     if (test) {
-  //       retVal = !appState.dataLoaded;
-  //     } else {
-  //       retVal = appState.dataLoaded;
-  //     }
-  //     return retVal;
-  //   };
-  // },
-};
 
 export default new Vuex.Store({
   state,
   getters,
   mutations,
+  actions,
 });

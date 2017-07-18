@@ -1,6 +1,6 @@
 <template>
   <v-ons-gesture-detector @swipeleft="swipe('left')" @swiperight="swipe('right')">
-    <v-ons-tabbar :tabs="tabs" :visible="true" :index.sync="activeIndex">
+    <v-ons-tabbar :tabs="tabs" visible="true" :index.sync="activeIndex">
     </v-ons-tabbar>
   </v-ons-gesture-detector>
 </template>

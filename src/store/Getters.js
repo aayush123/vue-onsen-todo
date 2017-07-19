@@ -12,17 +12,8 @@ const getters = {
       return activeProjectTasks;
     };
   },
-  // dataLoadStatus(appState) {
-  //   return (test) => {
-  //     let retVal;
-  //     if (test) {
-  //       retVal = !appState.dataLoaded;
-  //     } else {
-  //       retVal = appState.dataLoaded;
-  //     }
-  //     return retVal;
-  //   };
-  // },
+  usernameGetter: appState => appState.username,
+  clientTokenGetter: appState => appState.clientToken,
 };
 
 export default getters;

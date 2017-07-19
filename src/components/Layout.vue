@@ -1,6 +1,6 @@
 <template>
   <v-ons-gesture-detector @swipeleft="swipe('left')" @swiperight="swipe('right')">
-    <v-ons-tabbar :tabs="tabs" visible="true" :index.sync="activeIndex">
+    <v-ons-tabbar :tabs="tabs" :visible="tabsVisible" :index.sync="activeIndex">
     </v-ons-tabbar>
   </v-ons-gesture-detector>
 </template>
@@ -13,16 +13,17 @@ export default {
   name: 'layout',
   data() {
     return {
+      tabsVisible: true,
       activeIndex: 0,
       tabs: [
         {
-          icon: 'ion-home',
+          icon: 'ion-compose',
           label: 'Tasks',
           page: TasksPage,
           animation: 'push',
         },
         {
-          icon: 'ion-chatbox',
+          icon: 'ion-android-list',
           label: 'Projects',
           page: ProjectsPage,
           animation: 'push',
@@ -48,7 +49,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-ons-splitter-side[side=left][animation=overlay] {
-  border-right: 1px solid #BBB;
-}
 </style>

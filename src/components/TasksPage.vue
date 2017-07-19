@@ -2,61 +2,73 @@
   <v-ons-page>
     <v-ons-tabbar :tabs="tabs" position="top">
     </v-ons-tabbar>
+    <v-ons-fab position="bottom right" @click="showAddTaskDialog">
+      <v-ons-icon icon="md-plus"></v-ons-icon>
+    </v-ons-fab>
+    <v-ons-alert-dialog cancelable
+      :visible.sync="addTaskDialog"
+      modifier="rowfooter"
+      title='Add A Task'
+      :footer="{
+        Cancel: () => {addTaskDialog = false; newTask = ''},
+        Ok: () => {addTaskDialog = false; confirmAddTask();}
+      }"
+    >
+      <v-ons-input placeholder="New Task" float v-model="newTask" />
+    </v-ons-alert-dialog>
   </v-ons-page>
 </template>
 
 <script>
-import ActiveTasksPage from './ActiveTasksPage';
-import CompletedTasksPage from './CompletedTasksPage';
+import TasksListPage from './TasksListPage';
+import stateServices from '../StateServices/StateServicesIndex';
 
 export default {
-  name: 'home',
+  name: 'TasksPage',
   data() {
     return {
+      addTaskDialog: false,
+      newTask: '',
       tabs: [
         {
           label: 'Active',
-          page: ActiveTasksPage,
+          page: TasksListPage,
           active: true,
+          props: {
+            taskCompletedStatus: false,
+            listHeader: 'Active Tasks',
+            listIcon: 'ion-android-checkbox-outline-blank',
+            showDeleteAll: false,
+          },
         },
         {
           label: 'Complete',
-          page: CompletedTasksPage,
+          page: TasksListPage,
+          props: {
+            taskCompletedStatus: true,
+            listHeader: 'Completed Tasks',
+            listIcon: 'ion-android-checkbox-outline',
+            showDeleteAll: true,
+          },
         },
       ],
     };
   },
   methods: {
-    goTo(url) {
-      window.open(url, '_blank');
+    showAddTaskDialog() {
+      this.addTaskDialog = true;
+    },
+    confirmAddTask() {
+      stateServices.addTaskToState(this.newTask);
+      this.newTask = '';
     },
   },
   components: {
-    ActiveTasksPage,
-    CompletedTasksPage,
+    TasksListPage,
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.header {
-  text-align: center;
-}
-
-img {
-  max-width: 300px;
-}
-
-ons-list-title:not(:first-of-type) {
-  margin-top: 30px;
-}
-
-ons-card {
-  text-align: center;
-}
-
-ons-list-item, ons-card {
-  cursor: pointer;
-}
 </style>

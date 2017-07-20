@@ -1,51 +1,25 @@
-import Vue from 'vue';
+import addTaskMutation from './mutations/AddTaskMutation';
+import toggleTaskStatusMutation from './mutations/ToggleTaskStatusMutation';
+import updateTaskMutation from './mutations/UpdateTaskMutation';
+import deleteTaskMutation from './mutations/DeleteTaskMutation';
+import deleteAllCompletedTasksMutation from './mutations/DeleteAllCompletedTasksMutation';
+import createProjectMutation from './mutations/CreateProjectMutation';
+import changeActiveProjectMutation from './mutations/ChangeActiveProjectMutation';
+import deleteProjectMutation from './mutations/DeleteProjectMutation';
+import updateProjectMutation from './mutations/UpdateProjectMutation';
+import hydrateState from './mutations/HydrateState';
 
 const mutations = {
-  addTaskMutation(state, newTaskObj) {
-    state.tasks.push(newTaskObj);
-  },
-  toggleTaskStatusMutation(state, taskId) {
-    const newTasksArr = [];
-    for (let tasksIdx = 0; tasksIdx < state.tasks.length; tasksIdx += 1) {
-      if (state.tasks[tasksIdx].taskId === taskId) {
-        const toggleTask = state.tasks[tasksIdx];
-        toggleTask.completed = !toggleTask.completed;
-        newTasksArr.push(toggleTask);
-      } else {
-        newTasksArr.push(state.tasks[tasksIdx]);
-      }
-    }
-    Vue.set(state, 'tasks', newTasksArr);
-  },
-  updateTaskMutation(state, task) {
-    const newTasksArr = [];
-    for (let tasksIdx = 0; tasksIdx < state.tasks.length; tasksIdx += 1) {
-      if (state.tasks[tasksIdx].taskId === task.taskId) {
-        newTasksArr.push(task);
-      } else {
-        newTasksArr.push(state.tasks[tasksIdx]);
-      }
-    }
-    Vue.set(state, 'tasks', newTasksArr);
-  },
-  deleteTaskMutation(state, taskId) {
-    const newTasksArr = [];
-    for (let tasksIdx = 0; tasksIdx < state.tasks.length; tasksIdx += 1) {
-      if (state.tasks[tasksIdx].taskId !== taskId) {
-        newTasksArr.push(state.tasks[tasksIdx]);
-      }
-    }
-    Vue.set(state, 'tasks', newTasksArr);
-  },
-  deleteAllCompletedTasksMutation(state) {
-    const newTasksArr = [];
-    for (let tasksIdx = 0; tasksIdx < state.tasks.length; tasksIdx += 1) {
-      if (!state.tasks[tasksIdx].completed) {
-        newTasksArr.push(state.tasks[tasksIdx]);
-      }
-    }
-    Vue.set(state, 'tasks', newTasksArr);
-  },
+  addTaskMutation,
+  toggleTaskStatusMutation,
+  updateTaskMutation,
+  deleteTaskMutation,
+  deleteAllCompletedTasksMutation,
+  createProjectMutation,
+  changeActiveProjectMutation,
+  deleteProjectMutation,
+  updateProjectMutation,
+  hydrateState,
 };
 
 export default mutations;

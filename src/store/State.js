@@ -1,8 +1,9 @@
 const state = {
+  activeIndex: 0,
   dataLoaded: false,
   username: 'Ayush',
   clientToken: 'DummyToken',
-  activeProject: 'DummyProject',
+  activeProject: '',
   projects: [],
   tasks: [],
 };

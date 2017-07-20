@@ -1,6 +1,6 @@
 <template>
   <v-ons-gesture-detector @swipeleft="swipe('left')" @swiperight="swipe('right')">
-    <v-ons-tabbar :tabs="tabs" :visible="tabsVisible" :index.sync="activeIndex">
+    <v-ons-tabbar :tabs="tabs" :visible="tabsVisible" :index.sync="activeIndex" animation="slide">
     </v-ons-tabbar>
   </v-ons-gesture-detector>
 </template>
@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       tabsVisible: true,
-      activeIndex: 0,
+      activeIndex: this.$Store.getters.projectListGetter.length === 0 ? 1 : 0,
       tabs: [
         {
           icon: 'ion-compose',
@@ -43,6 +43,14 @@ export default {
         this.activeIndex -= 1;
       }
     },
+  },
+  beforeCreate() {
+    if (typeof Storage !== 'undefined') {
+      const todoAppData = window.localStorage.getItem('todoAppData');
+      if (todoAppData) {
+        this.$Store.commit('hydrateState', JSON.parse(todoAppData));
+      }
+    }
   },
 };
 </script>

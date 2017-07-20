@@ -5,14 +5,12 @@
         {{listHeader}}
       </v-ons-list-header>
       <v-ons-list-item tappable ripple modifier="material" v-for="eachTask in tasks" :key="eachTask.taskId" v-if="eachTask.completed === completed">
-        <!-- <v-ons-gesture-detector @hold="longPress(eachTask)"> -->
-          <div class="left" @click="toggleStatus(eachTask.taskId)">
-            <v-ons-icon :icon="listIcon" class="list-item__icon" />
-          </div>
-          <div class="center" @hold="longPress(eachTask)">
-            {{eachTask.taskTitle}}
-          </div>
-        <!-- </v-ons-gesture-detector> -->
+        <div class="left" @click="toggleStatus(eachTask.taskId)">
+          <v-ons-icon :icon="listIcon" class="list-item__icon" />
+        </div>
+        <div class="center" @hold="longPress(eachTask)">
+          {{eachTask.taskTitle}}
+        </div>
       </v-ons-list-item>
     </v-ons-list>
     <v-ons-alert-dialog cancelable :visible.sync="displayOptionsDialog" title='Task Options'>

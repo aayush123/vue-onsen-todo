@@ -56,7 +56,11 @@ export default {
   },
   methods: {
     showAddTaskDialog() {
-      this.addTaskDialog = true;
+      if (this.$Store.getters.projectListGetter.length > 0) {
+        this.addTaskDialog = true;
+      } else {
+        this.$ons.notification.alert('Please create a project first');
+      }
     },
     confirmAddTask() {
       stateServices.addTaskToState(this.newTask);

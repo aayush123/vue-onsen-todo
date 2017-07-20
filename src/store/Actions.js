@@ -21,6 +21,18 @@ const actions = {
     context.commit('deleteAllCompletedTasksMutation');
     DBservices.deleteAllCompletedTasksInDB(context.getters.usernameGetter, context.getters.clientTokenGetter);
   },
+  createProjectAction(context, newProjectTitle) {
+    context.commit('createProjectMutation', newProjectTitle);
+    DBservices.createProjectInDB(newProjectTitle, context.getters.usernameGetter, context.getters.clientTokenGetter);
+  },
+  deleteProjectAction(context, projectTitle) {
+    context.commit('deleteProjectMutation', projectTitle);
+    DBservices.deleteProjectInDB(projectTitle, context.getters.usernameGetter, context.getters.clientTokenGetter);
+  },
+  updateProjectAction(context, { oldProjectTitle, newProjectTitle }) {
+    context.commit('updateProjectMutation', { oldProjectTitle, newProjectTitle });
+    DBservices.updateProjectInDB({ oldProjectTitle, newProjectTitle }, context.getters.usernameGetter, context.getters.clientTokenGetter);
+  },
 };
 
 export default actions;

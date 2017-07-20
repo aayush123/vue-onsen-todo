@@ -14,6 +14,8 @@ const getters = {
   },
   usernameGetter: appState => appState.username,
   clientTokenGetter: appState => appState.clientToken,
+  projectListGetter: appState => appState.projects,
+  activeIndexGetter: appState => appState.activeIndex,
 };
 
 export default getters;

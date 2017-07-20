@@ -3,6 +3,10 @@ import toggleTaskStatusInState from './ToggleTaskStatusInState';
 import deleteTaskInState from './DeleteTaskInState';
 import updateTaskInState from './UpdateTaskInState';
 import deleteAllCompletedTasksInState from './DeleteAllCompletedTasksInState';
+import createProjectInState from './CreateProjectInState';
+import changeActiveProjectInState from './ChangeActiveProjectInState';
+import deleteProjectInState from './DeleteProjectInState';
+import updateProjectInState from './UpdateProjectInState';
 
 export default {
   addTaskToState,
@@ -10,4 +14,8 @@ export default {
   deleteTaskInState,
   updateTaskInState,
   deleteAllCompletedTasksInState,
+  createProjectInState,
+  changeActiveProjectInState,
+  deleteProjectInState,
+  updateProjectInState,
 };

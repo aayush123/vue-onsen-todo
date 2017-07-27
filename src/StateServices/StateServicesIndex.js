@@ -7,6 +7,7 @@ import createProjectInState from './CreateProjectInState';
 import changeActiveProjectInState from './ChangeActiveProjectInState';
 import deleteProjectInState from './DeleteProjectInState';
 import updateProjectInState from './UpdateProjectInState';
+import changeActiveIndexInState from './ChangeActiveIndexInState';
 
 export default {
   addTaskToState,
@@ -18,4 +19,5 @@ export default {
   changeActiveProjectInState,
   deleteProjectInState,
   updateProjectInState,
+  changeActiveIndexInState,
 };

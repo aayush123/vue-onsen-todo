@@ -8,13 +8,14 @@
 <script>
 import TasksPage from './TasksPage';
 import ProjectsPage from './ProjectsPage';
+import stateServices from '../StateServices/StateServicesIndex';
 
 export default {
   name: 'layout',
   data() {
     return {
       tabsVisible: true,
-      activeIndex: this.$Store.getters.projectListGetter.length === 0 ? 1 : 0,
+      // activeIndex: this.$Store.getters.projectListGetter.length === 0 ? 1 : 0,
       tabs: [
         {
           icon: 'ion-compose',
@@ -38,10 +39,17 @@ export default {
   methods: {
     swipe: function swipe(direction) {
       if (direction === 'left' && this.activeIndex === 0) {
-        this.activeIndex += 1;
+        // this.activeIndex += 1;
+        stateServices.changeActiveIndexInState(this.activeIndex + 1);
       } else if (direction === 'right' && this.activeIndex === 1) {
-        this.activeIndex -= 1;
+        // this.activeIndex -= 1;
+        stateServices.changeActiveIndexInState(this.activeIndex - 1);
       }
+    },
+  },
+  computed: {
+    activeIndex() {
+      return this.$Store.getters.activeIndexGetter;
     },
   },
   beforeCreate() {

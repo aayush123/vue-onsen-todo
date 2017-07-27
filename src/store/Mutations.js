@@ -8,6 +8,7 @@ import changeActiveProjectMutation from './mutations/ChangeActiveProjectMutation
 import deleteProjectMutation from './mutations/DeleteProjectMutation';
 import updateProjectMutation from './mutations/UpdateProjectMutation';
 import hydrateState from './mutations/HydrateState';
+import changeActiveIndexMutation from './mutations/ChangeActiveIndexMutation';
 
 const mutations = {
   addTaskMutation,
@@ -20,6 +21,7 @@ const mutations = {
   deleteProjectMutation,
   updateProjectMutation,
   hydrateState,
+  changeActiveIndexMutation,
 };
 
 export default mutations;

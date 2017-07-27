@@ -56,6 +56,7 @@ export default {
   },
   methods: {
     selectProject(projectTitle) {
+      stateServices.changeActiveIndexInState(0);
       stateServices.changeActiveProjectInState(projectTitle);
     },
     longPress(projectTitle) {

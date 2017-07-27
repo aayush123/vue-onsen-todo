@@ -1,6 +1,6 @@
 <template>
   <v-ons-page>
-    <v-ons-tabbar :tabs="tabs" position="top">
+    <v-ons-tabbar :tabs="tabs" position="top" animation="fade">
     </v-ons-tabbar>
     <v-ons-fab position="bottom right" @click="showAddTaskDialog">
       <v-ons-icon icon="md-plus"></v-ons-icon>

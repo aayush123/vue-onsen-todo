@@ -5,6 +5,7 @@
         <param name="onload" value="true" />
     </feature>
     <name>todo-app</name>
+    <icon src="res/icon/todoIcon.png" />
     <description>
       Vue.js + Onsen UI + Cordova sample app
     </description>
